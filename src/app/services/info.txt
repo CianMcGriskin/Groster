@@ -1,0 +1,12 @@
+The account service handles communication between the Angular app and the backend api for everything related to accounts.
+It contains methods for the login, logout and registration, as well as and standard CRUD methods for retrieving and modifying user data.
+
+On successful login the returned user is stored in browser local storage to keep the user logged in between page refreshes and browser sessions,
+ if you prefer not to use local storage you can simply remove it from the account service and the application will continue to work correctly,
+  except for staying logged in between page refreshes.
+
+The user property exposes an RxJS observable (Observable<User>) so any component can subscribe to be notified when a user logs in,
+ logs out or updates their profile. The notification is triggered by the call to this.userSubject.next() from each of those methods.
+For more info on component communication with RxJS see the tutorial Angular 10 - Communicating Between Components with Observable & Subject.
+
+The userValue getter allows other components to easily get the current value of the logged in user without having to subscribe to the user observable.
