@@ -1,0 +1,14 @@
+The app initializer runs before the boilerplate app starts up and attempts to automatically
+ authenticate the user in the background by calling accountService.refreshToken() to get a new JWT token from the api 
+ using the refresh token stored in the browser cookie (if it exists).
+
+If the user has logged in previously (without logging out)
+ and the browser still contains a valid refresh token cookie 
+ then they will be automatically logged in when the app loads.
+
+The call to the .subscribe() method triggers the request to the api,
+ and the .add() method is used for executing additional logic after the request completes (success or failure), 
+ so it works like a promise finally() method.
+
+The app initializer is added to angular app in the providers section of the app module using the APP_INITIALIZER injection token.
+ For more info see https://angular.io/api/core/APP_INITIALIZER.

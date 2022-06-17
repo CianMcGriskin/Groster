@@ -1,0 +1,13 @@
+In order to run and test the Angular boilerplate app without a real backend API, 
+the example uses a fake backend that intercepts the HTTP requests from the Angular app and sends back "fake" responses.
+ This is done by a class that implements the Angular HttpInterceptor interface, 
+ for more information on Angular HTTP Interceptors see https://angular.io/api/common/http/HttpInterceptor or this article.
+
+The fake backend is organised into a top level handleRoute() function that checks the request url and method to determine how the request should be handled.
+ For intercepted routes one of the below // route functions is called, for all other routes the request is passed through to the real backend by calling next.handle(request).
+  Below the route functions there are // helper functions for returning different response types and performing small tasks.
+
+The fake backend can't send emails so instead displays "email" messages on the screen by calling alertService.info()
+with the contents of the email e.g. "verify email" and "reset password" emails.
+
+For more info see Angular 10 - Fake Backend Example for Backendless Development.
